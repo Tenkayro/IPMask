@@ -54,7 +54,7 @@ npm run clean
 
 ## Publishing a release
 
-`npm run release` interactively selects a patch, minor, or major version bump. It builds the mod, commits and pushes the version change, uploads the jar to Modrinth with Minotaur, then creates a GitHub release with the same jar. Both services use the version number `mc<Minecraft>-<mod version>-fabric`, for example `mc26.3-1.0.1-fabric`.
+`npm run release` interactively selects the current version or a patch, minor, or major version bump. It builds the mod, commits and pushes a changed version, uploads the jar to Modrinth with Minotaur, then creates a GitHub release with the same jar. Both services use the version number `mc<Minecraft>-<mod version>-fabric`, for example `mc26.3-26.1.1-fabric`. Selecting the current version does not create a version commit.
 
 Publishing requires a clean branch synchronized with its upstream, GitHub CLI authentication (`gh auth login`), an existing Modrinth project matching `modrinth_project_id` in `gradle.properties`, and a Modrinth token in `.env` or `MODRINTH_TOKEN`. Start from `.env.example` to configure the token. The prompt describes the public actions and requires confirmation before changing the version or publishing. **No release has been created by setting up this workflow.** If an upload fails after the version commit is pushed, that commit remains on the branch and the service that already accepted the upload may need manual follow-up.
 
