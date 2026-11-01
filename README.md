@@ -42,7 +42,7 @@ To launch the development client with Mod Menu for optional integration checks:
 ./gradlew -PwithModMenu runClient
 ```
 
-Mod Menu is added to the development runtime only when `-PwithModMenu` is passed, and is listed as a suggestion in Fabric metadata. Its update checker is disabled for this mod. It is not a compile or release dependency. Run `./gradlew runClient` without that property to test the mod without Mod Menu. Fabric API provides the resource loader used for IPMask's localized strings.
+Mod Menu is added to the development runtime only when `-PwithModMenu` is passed, and is listed as a suggestion in Fabric metadata. Its update checker is disabled for this mod. It is not a compile or release dependency. Run `./gradlew runClient` without that property to test the mod without Mod Menu. Fabric API provides the resource loader used for IPMask's localized strings. Mod Menu 21.0.0 rejects `"client"` as a custom badge key, so its Client badge is supplied automatically by the mod's `"environment": "client"` metadata instead.
 
 ## Manual test checklist
 

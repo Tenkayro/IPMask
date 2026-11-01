@@ -40,9 +40,6 @@
   },
   "custom": {
     "modmenu": {
-      "badges": [
-        "client"
-      ],
       "links": {
         "ipmask.modrinth": "https://modrinth.com/mod/ipmask",
         "ipmask.sources": "https://github.com/Tenkayro/IPMask",
