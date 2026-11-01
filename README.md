@@ -11,7 +11,7 @@ The mod is client-side only. It never rewrites server entries or changes pinging
 **Author:** Tenkayro  
 **Java package:** `tenkayro.ipmask`
 
-The focusable 24×24 eye controls use custom high-contrast open-eye and crossed-eye sprites.
+The focusable 20×20 eye controls match the address field height and use simple monochrome open-eye and crossed-eye sprites based on the supplied Font Awesome Free 7.3.1 SVGs. The source SVGs, including their attribution, are preserved in `branding/`.
 
 ## Supported version and toolchain
 
@@ -42,12 +42,13 @@ The same tasks are available through npm on Windows:
 
 ```shell
 npm run start
+npm run start:modmenu
 npm run build
 npm test
 npm run clean
 ```
 
-`npm run start` always starts the development client with Mod Menu. These scripts use the checked-in Gradle wrapper; install Node.js/npm and Java 25 first.
+`npm run start` launches the development client without Mod Menu. Use `npm run start:modmenu` when you want to test the optional Mod Menu integration. These scripts use the checked-in Gradle wrapper; install Node.js/npm and Java 25 first.
 
 To launch the development client with Mod Menu for optional integration checks:
 
@@ -86,7 +87,7 @@ The author confirmed the interactive checklist in the Minecraft client. The eye 
 
 ## Logo and project links
 
-The original logo source is preserved in `branding/`. The 512×512 Modrinth-ready icon is `icon-512.png`; the Fabric and Mod Menu icon is `src/main/resources/assets/ipmask/icon.png`.
+The supplied `IPMaskIcon.jpg` source is preserved in `branding/`. Optimized Lanczos-resized versions are used for the README header, the Fabric and Mod Menu icons, and the 512×512 Modrinth-ready `icon-512.png`.
 
 Project links in `fabric.mod.json`: `https://modrinth.com/mod/ipmask`, `https://github.com/Tenkayro/IPMask`, and `https://github.com/Tenkayro/IPMask/issues`.
 

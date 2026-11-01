@@ -18,7 +18,7 @@ public final class EyeToggleButton extends Button {
 	private final Runnable toggle;
 
 	public EyeToggleButton(int x, int y, BooleanSupplier shown, Runnable toggle) {
-		super(x, y, 24, 24, Component.translatable("ipmask.show"), button -> {
+		super(x, y, 20, 20, Component.translatable("ipmask.show"), button -> {
 			EyeToggleButton eyeButton = (EyeToggleButton)button;
 			eyeButton.toggle.run();
 			eyeButton.refreshState();
@@ -41,7 +41,7 @@ public final class EyeToggleButton extends Button {
 		Identifier sprite = isShown ? OPEN_SPRITE : HIDDEN_SPRITE;
 		Identifier texture = isShown ? OPEN_TEXTURE : HIDDEN_TEXTURE;
 		if (Minecraft.getInstance().getResourceManager().getResource(texture).isPresent()) {
-			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX() + 2, this.getY() + 2, 20, 20);
+			graphics.blitSprite(RenderPipelines.GUI_TEXTURED, sprite, this.getX() + 2, this.getY() + 2, 16, 16);
 			return;
 		}
 

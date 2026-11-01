@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gradlew.bat build",
     "clean": "gradlew.bat clean",
-    "start": "gradlew.bat -PwithModMenu runClient",
+    "start": "gradlew.bat runClient",
+    "start:modmenu": "gradlew.bat -PwithModMenu runClient",
     "test": "gradlew.bat test"
   }
 }
