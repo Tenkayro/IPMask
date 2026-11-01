@@ -1,8 +1,6 @@
 package tenkayro.ipmask.mixin;
 
-import tenkayro.ipmask.client.AddressListVisibility;
 import tenkayro.ipmask.client.MaskText;
-import net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen;
 import net.minecraft.client.gui.screens.multiplayer.ServerSelectionList;
 import net.minecraft.client.server.LanServer;
 import org.spongepowered.asm.mixin.Final;
@@ -17,10 +15,6 @@ public abstract class NetworkServerEntryMixin {
 	@Final
 	protected LanServer serverData;
 
-	@Shadow
-	@Final
-	private JoinMultiplayerScreen screen;
-
 	@ModifyArg(
 		method = "extractContent",
 		at = @At(
@@ -31,6 +25,6 @@ public abstract class NetworkServerEntryMixin {
 		index = 1
 	)
 	private String ipmask$maskLanAddress(String address) {
-		return ((AddressListVisibility)this.screen).ipmask$areAddressesVisible() ? address : MaskText.mask(address, address);
+		return MaskText.mask(address, address);
 	}
 }

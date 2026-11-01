@@ -71,7 +71,7 @@ Mod Menu is added to the development runtime only when `-PwithModMenu` is passed
 - [x] Add Server: address starts hidden; typing, deleting, and pasting work; eye toggles visibility.
 - [x] Edit Server: same behavior; saving without changes preserves the saved address.
 - [x] Direct Connection: address starts hidden; typing and eye toggle work.
-- [x] Server list: address portions in names and entry hover tooltips are masked; the list eye toggle reveals/hides them.
+- [x] Server list: server names stay unchanged; IP addresses in LAN entries and hover tooltips are masked.
 - [x] Ctrl+C and Ctrl+X are blocked while an address field is hidden and work when it is visible.
 - [x] Connecting and pinging still use the real address and behave like vanilla.
 - [x] Reopening an address screen starts hidden again.
@@ -86,8 +86,7 @@ The author confirmed the interactive checklist in the Minecraft client. The eye 
 - `EditBox` — masks rendered field text and narration, and blocks copy/cut while hidden without changing editing.
 - `ManageServerScreen` — adds the per-screen eye toggle to Add Server and Edit Server fields.
 - `DirectJoinServerScreen` — adds the per-screen eye toggle to Direct Connection.
-- `JoinMultiplayerScreen` — adds a keyboard-accessible eye toggle for server-list name masking.
-- `ServerSelectionList.OnlineServerEntry` — masks matching address text, narration, and hover tooltip content.
+- `ServerSelectionList.OnlineServerEntry` — masks IP addresses in hover tooltip content without changing server names.
 - `ServerSelectionList.NetworkServerEntry` — masks the address shown for LAN entries.
 - `ConnectScreen` — remembers the active display address so later failure messages can be sanitized without touching the connection.
 - `DisconnectedScreen` — masks matching address text in the error reason and its narration.
