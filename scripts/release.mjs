@@ -174,14 +174,12 @@ async function main() {
 	const bump = unwrap(await select({
 		message: `Choose release type (current ${currentVersion})`,
 		options: [
-			{ value: "current", label: `Current version — ${currentVersion}` },
 			{ value: "patch", label: `Patch — ${bumpVersion(currentVersion, "patch")}` },
 			{ value: "minor", label: `Minor — ${bumpVersion(currentVersion, "minor")}` },
 			{ value: "major", label: `Major — ${bumpVersion(currentVersion, "major")}` },
 		],
 	}));
-	const version = bump === "current" ? currentVersion : bumpVersion(currentVersion, bump);
-	const versionChanged = currentVersion !== version;
+	const version = bumpVersion(currentVersion, bump);
 	const releaseId = `mc${minecraftVersion}-${version}-fabric`;
 	const releaseTag = releaseId;
 	const changelog = unwrap(await text({
@@ -202,7 +200,7 @@ async function main() {
 			`Release:   ${releaseId}`,
 			`Modrinth:  ${projectId}`,
 			`GitHub:    ${repository} (${branch})`,
-			`Actions:   Build${versionChanged ? ", commit and push version" : ""}, upload to Modrinth, create GitHub release`,
+			"Actions:   Build, commit and push version, upload to Modrinth, create GitHub release",
 		].join("\n"),
 		"Public release summary",
 	);
@@ -217,9 +215,7 @@ async function main() {
 	const jarPath = join(root, ".dist", `ipmask-${version}.jar`);
 	mkdirSync(join(root, "build"), { recursive: true });
 	writeFileSync(notesPath, `${changelog}\n`, "utf8");
-	if (versionChanged) {
-		writeFileSync(propertiesPath, originalProperties.replace(versionLine, `version=${version}`), "utf8");
-	}
+	writeFileSync(propertiesPath, originalProperties.replace(versionLine, `version=${version}`), "utf8");
 
 	let versionCommitted = false;
 	let versionStaged = false;
@@ -227,17 +223,15 @@ async function main() {
 		await run(gradle, ["-PreleaseVersion=" + version, "build", "--no-daemon"], env);
 		if (!existsSync(jarPath)) throw new Error(`Built release jar not found: ${jarPath}`);
 
-		if (versionChanged) {
-			await runSync("git", ["add", "gradle.properties"], env);
-			versionStaged = true;
-			await runSync("git", [
-				"commit",
-				"-m", `Release ${releaseTag}`,
-				"-m", "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
-			], env);
-			versionCommitted = true;
-			await run("git", ["push", "origin", branch], env);
-		}
+		await runSync("git", ["add", "gradle.properties"], env);
+		versionStaged = true;
+		await runSync("git", [
+			"commit",
+			"-m", `Release ${releaseTag}`,
+			"-m", "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>",
+		], env);
+		versionCommitted = true;
+		await run("git", ["push", "origin", branch], env);
 
 		await run(gradle, ["-PreleaseVersion=" + version, "modrinth", "--no-daemon"], env);
 		await run("gh", [
@@ -248,7 +242,7 @@ async function main() {
 			"--notes-file", notesPath,
 		], env);
 	} catch (error) {
-		if (versionChanged && !versionCommitted) {
+		if (!versionCommitted) {
 			if (versionStaged) runSync("git", ["restore", "--staged", "--", "gradle.properties"], env);
 			writeFileSync(propertiesPath, originalProperties, "utf8");
 		}
