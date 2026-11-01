@@ -1,38 +1,54 @@
 {
-	"schemaVersion": 1,
-	"id": "ipmask",
-	"version": "${version}",
-	"name": "IPMask",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
-	"license": "CC0-1.0",
-	"icon": "assets/ipmask/icon.png",
-	"environment": "*",
-	"entrypoints": {
-		"main": [
-			"ipmask.IPMask"
-		],
-		"client": [
-			"ipmask.client.IPMaskClient"
-		]
-	},
-	"mixins": [
-		"ipmask.mixins.json",
-		{
-			"config": "ipmask.client.mixins.json",
-			"environment": "client"
-		}
-	],
-	"depends": {
-		"fabricloader": ">=0.20.1",
-		"minecraft": "~26.3",
-		"java": ">=25",
-		"fabric-api": "*"
-	}
+  "schemaVersion": 1,
+  "id": "ipmask",
+  "version": "${version}",
+  "name": "IPMask",
+  "description": "Hide server IPs in your server list and never leak them again.",
+  "authors": [
+    "Tenkayro"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/ipmask",
+    "sources": "https://github.com/Tenkayro/IPMask",
+    "issues": "https://github.com/Tenkayro/IPMask/issues"
+  },
+  "license": "MIT",
+  "icon": {
+    "128": "assets/ipmask/icon-128.png",
+    "512": "assets/ipmask/icon.png"
+  },
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "tenkayro.ipmask.client.IPMaskClient"
+    ]
+  },
+  "mixins": [
+    {
+      "config": "ipmask.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=${java_version}"
+  },
+  "suggests": {
+    "modmenu": ">=${modmenu_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "badges": [
+        "client"
+      ],
+      "links": {
+        "ipmask.modrinth": "https://modrinth.com/mod/ipmask",
+        "ipmask.sources": "https://github.com/Tenkayro/IPMask",
+        "ipmask.issues": "https://github.com/Tenkayro/IPMask/issues"
+      },
+      "update_checker": false
+    }
+  }
 }

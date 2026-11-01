@@ -1,14 +1,20 @@
 {
-	"required": true,
-	"package": "ipmask.client.mixin",
-	"compatibilityLevel": "JAVA_25",
-	"client": [
-		"ExampleClientMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
-	}
+  "required": true,
+  "minVersion": "0.8",
+  "package": "tenkayro.ipmask.mixin",
+  "compatibilityLevel": "JAVA_${java_version}",
+  "client": [
+    "ConnectScreenMixin",
+    "DirectJoinServerScreenMixin",
+    "DisconnectedScreenMixin",
+    "EditBoxMixin",
+    "JoinMultiplayerScreenMixin",
+    "ManageServerScreenMixin",
+    "NetworkServerEntryMixin",
+    "OnlineServerEntryMixin",
+    "ScreenInvoker"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

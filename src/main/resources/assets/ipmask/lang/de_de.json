@@ -1,0 +1,10 @@
+{
+  "ipmask.show": "IP anzeigen",
+  "ipmask.hide": "IP verbergen",
+  "ipmask.field.hidden": "Serveradresse verborgen",
+  "modmenu.descriptionTranslation.ipmask": "IPMask verbirgt Serveradressen in Multiplayer-Menüs, einschließlich gespeicherter Servernamen, die eine Adresse enthalten. Adressen werden in Eingabefeldern, der Serverliste, Trennungsnachrichten und der Bildschirmvorlese verborgen, sofern sie nicht für den aktuellen Bildschirm eingeblendet werden. Dieser clientseitige Datenschutz hilft Streamern und Content-Creatorn und verändert weder gespeicherte Serverdaten noch das Verbindungsverhalten.",
+  "modmenu.summaryTranslation.ipmask": "Server-IPs in der Serverliste verbergen und nie wieder versehentlich zeigen.",
+  "ipmask.modrinth": "Modrinth",
+  "ipmask.sources": "Quellcode",
+  "ipmask.issues": "Fehler melden"
+}
