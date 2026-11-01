@@ -42,13 +42,14 @@ The same tasks are available through npm on Windows:
 
 ```shell
 npm run start
+npm run start:offline
 npm run start:modmenu
 npm run build
 npm test
 npm run clean
 ```
 
-`npm run start` launches the development client without Mod Menu. Use `npm run start:modmenu` when you want to test the optional Mod Menu integration. These scripts use the checked-in Gradle wrapper; install Node.js/npm and Java 25 first.
+`npm run start` launches the development client without Mod Menu. After dependencies have been downloaded once, `npm run start:offline` skips Gradle's online dependency checks and may start faster on a slow connection; it fails if a required dependency is missing from the local cache. Use `npm run start:modmenu` when you want to test the optional Mod Menu integration. These scripts use the checked-in Gradle wrapper; install Node.js/npm and Java 25 first.
 
 To launch the development client with Mod Menu for optional integration checks:
 
