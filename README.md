@@ -4,7 +4,7 @@
 
 # IPMask
 
-IPMask hides server IP addresses in multiplayer address fields, LAN entries, hover tooltips, connection status, and disconnect messages to help prevent accidental leaks in streams, screenshots, and recordings. Address fields remain editable, and a per-screen eye button reveals the address only when requested. Hidden addresses are not drawn as readable text, and copy/cut are blocked until the field is revealed.
+IPMask hides the connected server address anywhere Minecraft renders text through its font system, including chat, signs, holograms, GUI text, and hover tooltips. It also masks multiplayer address fields, LAN entries, connection status, disconnect messages, and narration to help prevent accidental leaks in streams, screenshots, and recordings. Address fields remain editable, and a per-screen eye button reveals the address only when requested. Hidden addresses are not drawn as readable text, and copy/cut are blocked until the field is revealed.
 
 The mod is client-side only. It never rewrites server entries or changes pinging and connection logic. Saved server names intentionally remain unchanged; an IP typed into a server name will still be visible there. Mod Menu is optional.
 
@@ -72,6 +72,7 @@ Mod Menu is added to the development runtime only when `-PwithModMenu` is passed
 - [x] Edit Server: same behavior; saving without changes preserves the saved address.
 - [x] Direct Connection: address starts hidden; typing and eye toggle work.
 - [x] Server list: server names stay unchanged; IP addresses in LAN entries and hover tooltips are masked.
+- [ ] Text matching the connected server address is masked across font-rendered text and narration.
 - [x] Ctrl+C and Ctrl+X are blocked while an address field is hidden and work when it is visible.
 - [x] Connecting and pinging still use the real address and behave like vanilla.
 - [ ] Connecting screen masks the displayed IP while the connection uses the original address.
@@ -90,6 +91,8 @@ The checked items were confirmed in the Minecraft client before the latest conne
 - `ServerSelectionList.OnlineServerEntry` — masks IP addresses in hover tooltip content without changing server names.
 - `ServerSelectionList.NetworkServerEntry` — masks the address shown for LAN entries.
 - `ConnectScreen` — masks the connecting status at render time and remembers the active display address for failure messages, without touching the connection.
+- `Font` — masks matching active server addresses in prepared text, including GUI, chat, signs, and holograms while preserving text styles.
+- `GameNarrator` — masks matching active server addresses in chat and system narration.
 - `DisconnectedScreen` — masks matching address text in the error reason and its narration.
 - `Screen` — exposes the inherited widget-registration method through a minimal invoker for the eye controls.
 

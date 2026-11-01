@@ -8,6 +8,8 @@
     "DirectJoinServerScreenMixin",
     "DisconnectedScreenMixin",
     "EditBoxMixin",
+    "FontMixin",
+    "GameNarratorMixin",
     "ManageServerScreenMixin",
     "NetworkServerEntryMixin",
     "OnlineServerEntryMixin",
