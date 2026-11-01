@@ -24,7 +24,7 @@ public abstract class JoinMultiplayerScreenMixin implements AddressListVisibilit
 	@Inject(method = "init", at = @At("TAIL"))
 	private void ipmask$addListToggle(CallbackInfo ci) {
 		((ScreenInvoker)this).ipmask$addRenderableWidget(
-			new EyeToggleButton(((Screen)(Object)this).width - 26, 6, () -> this.ipmask$visible, () -> this.ipmask$visible = !this.ipmask$visible)
+			new EyeToggleButton(((Screen)(Object)this).width - 30, 6, () -> this.ipmask$visible, () -> this.ipmask$visible = !this.ipmask$visible)
 		);
 	}
 }

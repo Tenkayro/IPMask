@@ -11,6 +11,8 @@ The mod is client-side only. It never rewrites server entries or changes pinging
 **Author:** Tenkayro  
 **Java package:** `tenkayro.ipmask`
 
+The focusable 24×24 eye controls use custom high-contrast open-eye and crossed-eye sprites.
+
 ## Supported version and toolchain
 
 | Component | Version |

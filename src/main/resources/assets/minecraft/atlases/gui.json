@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "type": "single",
+      "resource": "ipmask:gui/sprites/ipmask/eye_open",
+      "sprite": "ipmask:ipmask/eye_open"
+    },
+    {
+      "type": "single",
+      "resource": "ipmask:gui/sprites/ipmask/eye_hidden",
+      "sprite": "ipmask:ipmask/eye_hidden"
+    }
+  ]
+}
