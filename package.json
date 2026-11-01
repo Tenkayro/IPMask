@@ -1,0 +1,12 @@
+{
+  "name": "ipmask",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Client-side Minecraft Fabric mod that masks server IP addresses.",
+  "scripts": {
+    "build": "gradlew.bat build",
+    "clean": "gradlew.bat clean",
+    "start": "gradlew.bat -PwithModMenu runClient",
+    "test": "gradlew.bat test"
+  }
+}

@@ -38,6 +38,17 @@ Install a Java 25 JDK, then run:
 
 On Windows, run `.\gradlew.bat build`. The release jar is written to `build/libs/`.
 
+The same tasks are available through npm on Windows:
+
+```shell
+npm run start
+npm run build
+npm test
+npm run clean
+```
+
+`npm run start` always starts the development client with Mod Menu. These scripts use the checked-in Gradle wrapper; install Node.js/npm and Java 25 first.
+
 To launch the development client with Mod Menu for optional integration checks:
 
 ```shell
@@ -59,7 +70,7 @@ Mod Menu is added to the development runtime only when `-PwithModMenu` is passed
 - [x] The mod loads without Mod Menu installed.
 - [x] The built jar loads without errors in the log.
 
-The author confirmed the interactive checklist in the Minecraft client. The eye control now uses a Unicode glyph directly, avoiding atlas-loading issues.
+The author confirmed the interactive checklist in the Minecraft client. The eye controls use custom GUI sprites, with a localized text fallback if a sprite is unavailable.
 
 ## Mixin targets
 
