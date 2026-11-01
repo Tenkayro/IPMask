@@ -37,7 +37,7 @@ public abstract class DisconnectedScreenMixin {
 		method = "getNarrationMessage",
 		at = @At(
 			value = "INVOKE",
-			target = "Lnet/minecraft/network/chat/CommonComponents;joinForNarration([Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/Component;"
+			target = "Lnet/minecraft/network/chat/CommonComponents;joinForNarration([Lnet/minecraft/network/chat/Component;)Lnet/minecraft/network/chat/MutableComponent;"
 		),
 		index = 0
 	)
