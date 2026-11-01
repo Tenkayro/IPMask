@@ -18,8 +18,8 @@ The focusable 20×20 eye controls match the address field height and use simple 
 | Component | Version |
 | --- | --- |
 | Minecraft | 26.3 |
-| Fabric Loader | 0.20.1 |
-| Fabric API | 0.165.0+26.3 |
+| Fabric Loader | 0.19.5 |
+| Fabric API | 0.164.0+26.3 |
 | Fabric Loom | 1.19.3 |
 | Gradle wrapper | 9.8.2 |
 | Java | 25 |
