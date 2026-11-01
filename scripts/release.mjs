@@ -212,7 +212,7 @@ async function main() {
 	const versionLine = /^version=.*$/mu;
 	if (!versionLine.test(originalProperties)) throw new Error("Could not locate version= in gradle.properties.");
 	const notesPath = join(root, "build", "release-notes.md");
-	const jarPath = join(root, "build", "libs", `ipmask-${version}.jar`);
+	const jarPath = join(root, ".dist", `ipmask-${version}.jar`);
 	mkdirSync(join(root, "build"), { recursive: true });
 	writeFileSync(notesPath, `${changelog}\n`, "utf8");
 	writeFileSync(propertiesPath, originalProperties.replace(versionLine, `version=${version}`), "utf8");

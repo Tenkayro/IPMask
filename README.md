@@ -36,7 +36,7 @@ Install a Java 25 JDK, then run:
 ./gradlew build
 ```
 
-On Windows, run `.\gradlew.bat build`. The release jar is written to `build/libs/`.
+On Windows, run `.\gradlew.bat build`. Final build artifacts, including the release and sources jars, are written to `.dist/`.
 
 The same tasks are available through npm on Windows:
 

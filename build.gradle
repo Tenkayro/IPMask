@@ -91,6 +91,10 @@ java {
 	withSourcesJar()
 }
 
+tasks.withType(Jar).configureEach {
+	destinationDirectory = layout.projectDirectory.dir('.dist')
+}
+
 def modArtifactName = project.name
 
 jar {
