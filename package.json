@@ -6,9 +6,13 @@
   "scripts": {
     "build": "gradlew.bat build",
     "clean": "gradlew.bat clean",
+    "release": "node scripts/release.mjs",
     "start": "gradlew.bat runClient",
     "start:offline": "gradlew.bat --offline runClient",
     "start:modmenu": "gradlew.bat -PwithModMenu runClient",
     "test": "gradlew.bat test"
+  },
+  "devDependencies": {
+    "@clack/prompts": "^0.11.0"
   }
 }

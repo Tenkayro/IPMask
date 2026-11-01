@@ -1,7 +1,10 @@
 plugins {
 	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'com.modrinth.minotaur' version '2.+'
 	id 'maven-publish'
 }
+
+version = providers.gradleProperty('releaseVersion').getOrElse(project.version.toString())
 
 repositories {
 	maven {
@@ -25,6 +28,26 @@ dependencies {
 	minecraft "com.mojang:minecraft:${minecraft_version}"
 	implementation "net.fabricmc:fabric-loader:${loader_version}"
 	implementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+}
+
+modrinth {
+	token = providers.environmentVariable('MODRINTH_TOKEN').orNull
+	projectId = project.modrinth_project_id
+	versionNumber = project.provider { "mc${project.minecraft_version}-${project.version}-fabric" }
+	versionName = project.provider { "IPMask ${project.version} for Fabric ${project.minecraft_version}" }
+	versionType = 'release'
+	uploadFile = tasks.named('jar')
+	gameVersions = [project.minecraft_version]
+	loaders = ['fabric']
+	changelog = providers.provider {
+		def releaseNotes = rootProject.file('build/release-notes.md')
+		releaseNotes.isFile() ? releaseNotes.getText('UTF-8') : ''
+	}
+
+	dependencies {
+		required.project 'fabric-api'
+		optional.project 'modmenu'
+	}
 }
 
 if (project.hasProperty('withModMenu')) {

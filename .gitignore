@@ -4,6 +4,11 @@
 build/
 out/
 classes/
+node_modules/
+.env
+.env.*
+!.env.example
+.release/
 
 # eclipse
 

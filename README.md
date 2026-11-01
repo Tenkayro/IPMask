@@ -41,6 +41,7 @@ On Windows, run `.\gradlew.bat build`. The release jar is written to `build/libs
 The same tasks are available through npm on Windows:
 
 ```shell
+npm install
 npm run start
 npm run start:offline
 npm run start:modmenu
@@ -50,6 +51,12 @@ npm run clean
 ```
 
 `npm run start` launches the development client without Mod Menu. After dependencies have been downloaded once, `npm run start:offline` skips Gradle's online dependency checks and may start faster on a slow connection; it fails if a required dependency is missing from the local cache. Use `npm run start:modmenu` when you want to test the optional Mod Menu integration. These scripts use the checked-in Gradle wrapper; install Node.js/npm and Java 25 first.
+
+## Publishing a release
+
+`npm run release` interactively selects a patch, minor, or major version bump. It builds the mod, commits and pushes the version change, uploads the jar to Modrinth with Minotaur, then creates a GitHub release with the same jar. Both services use the version number `mc<Minecraft>-<mod version>-fabric`, for example `mc26.3-1.0.1-fabric`.
+
+Publishing requires a clean branch synchronized with its upstream, GitHub CLI authentication (`gh auth login`), an existing Modrinth project matching `modrinth_project_id` in `gradle.properties`, and a Modrinth token in `.env` or `MODRINTH_TOKEN`. Start from `.env.example` to configure the token. The prompt describes the public actions and requires confirmation before changing the version or publishing. **No release has been created by setting up this workflow.** If an upload fails after the version commit is pushed, that commit remains on the branch and the service that already accepted the upload may need manual follow-up.
 
 To launch the development client with Mod Menu for optional integration checks:
 
