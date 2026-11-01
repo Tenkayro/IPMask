@@ -32,7 +32,7 @@ public abstract class EditBoxMixin implements AddressMaskable {
 	@Inject(method = "applyFormat", at = @At("HEAD"), cancellable = true)
 	private void ipmask$maskRenderedText(String text, int offset, CallbackInfoReturnable<FormattedCharSequence> cir) {
 		if (this.ipmask$hidden) {
-			cir.setReturnValue(FormattedCharSequence.forward("\u2588".repeat(text.length()), Style.EMPTY));
+			cir.setReturnValue(FormattedCharSequence.forward("*".repeat(text.length()), Style.EMPTY));
 		}
 	}
 

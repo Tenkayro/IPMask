@@ -4,7 +4,7 @@ import net.minecraft.network.chat.Style;
 import net.minecraft.util.FormattedCharSequence;
 
 public final class MaskText {
-	private static final String MASK = "\u2588";
+	private static final String MASK = "*";
 
 	private MaskText() {
 	}
