@@ -4,9 +4,9 @@
 
 # IPMask
 
-IPMask hides server IP addresses in multiplayer menus to help prevent accidental leaks in streams, screenshots, and recordings. Address fields remain editable, and a per-screen eye button reveals the address only when requested. Hidden addresses are not drawn as readable text, and copy/cut are blocked until the field is revealed.
+IPMask hides server IP addresses in multiplayer address fields, LAN entries, hover tooltips, connection status, and disconnect messages to help prevent accidental leaks in streams, screenshots, and recordings. Address fields remain editable, and a per-screen eye button reveals the address only when requested. Hidden addresses are not drawn as readable text, and copy/cut are blocked until the field is revealed.
 
-The mod is client-side only. It never rewrites server entries or changes pinging and connection logic. Mod Menu is optional.
+The mod is client-side only. It never rewrites server entries or changes pinging and connection logic. Saved server names intentionally remain unchanged; an IP typed into a server name will still be visible there. Mod Menu is optional.
 
 **Author:** Tenkayro  
 **Java package:** `tenkayro.ipmask`
@@ -74,12 +74,13 @@ Mod Menu is added to the development runtime only when `-PwithModMenu` is passed
 - [x] Server list: server names stay unchanged; IP addresses in LAN entries and hover tooltips are masked.
 - [x] Ctrl+C and Ctrl+X are blocked while an address field is hidden and work when it is visible.
 - [x] Connecting and pinging still use the real address and behave like vanilla.
+- [ ] Connecting screen masks the displayed IP while the connection uses the original address.
 - [x] Reopening an address screen starts hidden again.
 - [x] Mod Menu: icon, name, description, client badge, and links display correctly.
 - [x] The mod loads without Mod Menu installed.
 - [x] The built jar loads without errors in the log.
 
-The author confirmed the interactive checklist in the Minecraft client. The eye controls use custom GUI sprites, with a localized text fallback if a sprite is unavailable.
+The checked items were confirmed in the Minecraft client before the latest connecting-screen change. That new masking behavior still needs an in-client check. The eye controls use custom GUI sprites, with a localized text fallback if a sprite is unavailable.
 
 ## Mixin targets
 
@@ -88,7 +89,7 @@ The author confirmed the interactive checklist in the Minecraft client. The eye 
 - `DirectJoinServerScreen` — adds the per-screen eye toggle to Direct Connection.
 - `ServerSelectionList.OnlineServerEntry` — masks IP addresses in hover tooltip content without changing server names.
 - `ServerSelectionList.NetworkServerEntry` — masks the address shown for LAN entries.
-- `ConnectScreen` — remembers the active display address so later failure messages can be sanitized without touching the connection.
+- `ConnectScreen` — masks the connecting status at render time and remembers the active display address for failure messages, without touching the connection.
 - `DisconnectedScreen` — masks matching address text in the error reason and its narration.
 - `Screen` — exposes the inherited widget-registration method through a minimal invoker for the eye controls.
 
