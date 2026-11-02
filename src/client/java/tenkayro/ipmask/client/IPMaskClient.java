@@ -13,6 +13,7 @@ public final class IPMaskClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		IPMaskConfig.load();
 		LOGGER.info("IPMask initialized");
 	}
 
@@ -22,17 +23,36 @@ public final class IPMaskClient implements ClientModInitializer {
 	}
 
 	public static Component maskActive(Component component) {
+		if (!IPMaskConfig.hideConnectionScreens()) {
+			return component;
+		}
 		String original = component.getString();
-		String masked = maskActive(original);
+		String masked = maskText(original);
 		return masked.equals(original) ? component : Component.literal(masked);
 	}
 
 	public static String maskActive(String text) {
+		return IPMaskConfig.hideInGameText() ? maskText(text) : text;
+	}
+
+	public static Component maskNarration(Component component) {
+		if (!IPMaskConfig.hideNarration()) {
+			return component;
+		}
+		String original = component.getString();
+		String masked = maskText(original);
+		return masked.equals(original) ? component : Component.literal(masked);
+	}
+
+	private static String maskText(String text) {
 		String masked = MaskText.mask(text, activeAddress);
 		return MaskText.mask(masked, activeHost);
 	}
 
 	public static FormattedCharSequence maskActive(FormattedCharSequence sequence) {
+		if (!IPMaskConfig.hideInGameText()) {
+			return sequence;
+		}
 		FormattedCharSequence masked = MaskText.mask(sequence, activeAddress);
 		return MaskText.mask(masked, activeHost);
 	}

@@ -1,6 +1,7 @@
 package tenkayro.ipmask.mixin;
 
 import tenkayro.ipmask.client.IPMaskClient;
+import tenkayro.ipmask.client.IPMaskConfig;
 import net.minecraft.client.gui.screens.DisconnectedScreen;
 import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,7 +19,7 @@ public abstract class DisconnectedScreenMixin {
 		index = 0
 	)
 	private Component ipmask$maskVisibleTitle(Component title) {
-		return IPMaskClient.maskActive(title);
+		return IPMaskConfig.hideConnectionScreens() ? IPMaskClient.maskActive(title) : title;
 	}
 
 	@ModifyArg(
@@ -30,7 +31,7 @@ public abstract class DisconnectedScreenMixin {
 		index = 0
 	)
 	private Component ipmask$maskVisibleReason(Component reason) {
-		return IPMaskClient.maskActive(reason);
+		return IPMaskConfig.hideConnectionScreens() ? IPMaskClient.maskActive(reason) : reason;
 	}
 
 	@ModifyArg(
@@ -44,7 +45,7 @@ public abstract class DisconnectedScreenMixin {
 	private Component[] ipmask$maskNarration(Component[] components) {
 		Component[] maskedComponents = components.clone();
 		for (int i = 0; i < maskedComponents.length; i++) {
-			maskedComponents[i] = IPMaskClient.maskActive(maskedComponents[i]);
+			maskedComponents[i] = IPMaskClient.maskNarration(maskedComponents[i]);
 		}
 		return maskedComponents;
 	}

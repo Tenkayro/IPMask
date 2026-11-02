@@ -4,9 +4,21 @@
   "ipmask.show.short": "Show",
   "ipmask.hide.short": "Hide",
   "ipmask.field.hidden": "Server address hidden",
-  "modmenu.descriptionTranslation.ipmask": "IPMask hides server addresses in multiplayer menus, including saved server names that contain an address. Addresses are obscured in address fields, the server list, disconnection messages, and screen-reader narration unless revealed for the current screen. This is a client-side privacy aid for streamers and content creators; it does not change saved server data or connection behavior.",
+  "modmenu.descriptionTranslation.ipmask": "IPMask masks server addresses in address fields, server lists, chat, signs, holograms, GUI text, tooltips, connection messages, and narration. YACL and Mod Menu are optional and provide configurable masking options.",
   "modmenu.summaryTranslation.ipmask": "Hide server IPs in your server list and never leak them again.",
   "ipmask.modrinth": "Modrinth",
   "ipmask.sources": "Source code",
-  "ipmask.issues": "Issue tracker"
+  "ipmask.issues": "Issue tracker",
+  "ipmask.config.title": "IPMask Settings",
+  "ipmask.config.category.privacy": "Masking",
+  "ipmask.config.address_fields": "Hide address fields",
+  "ipmask.config.address_fields.description": "Mask server addresses in Add Server, Edit Server, and Direct Connection fields. Copy and cut are blocked while the field is hidden.",
+  "ipmask.config.server_list": "Hide server-list addresses",
+  "ipmask.config.server_list.description": "Mask addresses in LAN entries and server-list hover tooltips. Server names are intentionally unchanged.",
+  "ipmask.config.in_game_text": "Hide in-game text",
+  "ipmask.config.in_game_text.description": "Mask the active server address in rendered text, including chat, signs, holograms, GUI text, and hover tooltips.",
+  "ipmask.config.narration": "Hide narrated addresses",
+  "ipmask.config.narration.description": "Mask the active server address in chat and system narration for screen readers.",
+  "ipmask.config.connection_screens": "Hide connection-screen addresses",
+  "ipmask.config.connection_screens.description": "Mask the active server address on connecting and disconnection screens."
 }

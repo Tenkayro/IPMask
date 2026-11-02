@@ -1,6 +1,7 @@
 package tenkayro.ipmask.mixin;
 
 import tenkayro.ipmask.client.MaskText;
+import tenkayro.ipmask.client.IPMaskConfig;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.gui.screens.multiplayer.ServerSelectionList;
@@ -28,6 +29,9 @@ public abstract class OnlineServerEntryMixin {
 		index = 0
 	)
 	private Component ipmask$maskStatusTooltip(Component tooltip) {
+		if (!IPMaskConfig.hideServerList()) {
+			return tooltip;
+		}
 		String original = tooltip.getString();
 		String masked = MaskText.mask(original, this.serverData.ip);
 		return masked.equals(original) ? tooltip : Component.literal(masked);
@@ -42,6 +46,9 @@ public abstract class OnlineServerEntryMixin {
 		index = 0
 	)
 	private List<FormattedCharSequence> ipmask$maskPlayerTooltip(List<FormattedCharSequence> lines) {
+		if (!IPMaskConfig.hideServerList()) {
+			return lines;
+		}
 		List<FormattedCharSequence> maskedLines = new ArrayList<>(lines.size());
 		for (FormattedCharSequence line : lines) {
 			maskedLines.add(MaskText.mask(line, this.serverData.ip));

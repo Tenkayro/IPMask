@@ -1,6 +1,7 @@
 package tenkayro.ipmask.mixin;
 
 import tenkayro.ipmask.client.IPMaskClient;
+import tenkayro.ipmask.client.IPMaskConfig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.ConnectScreen;
 import net.minecraft.client.gui.screens.Screen;
@@ -38,6 +39,6 @@ public abstract class ConnectScreenMixin {
 		index = 1
 	)
 	private Component ipmask$maskConnectingMessage(Component message) {
-		return IPMaskClient.maskActive(message);
+		return IPMaskConfig.hideConnectionScreens() ? IPMaskClient.maskActive(message) : message;
 	}
 }

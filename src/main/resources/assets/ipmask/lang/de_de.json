@@ -4,9 +4,21 @@
   "ipmask.show.short": "Zeigen",
   "ipmask.hide.short": "Verbergen",
   "ipmask.field.hidden": "Serveradresse verborgen",
-  "modmenu.descriptionTranslation.ipmask": "IPMask verbirgt Serveradressen in Multiplayer-Menüs, einschließlich gespeicherter Servernamen, die eine Adresse enthalten. Adressen werden in Eingabefeldern, der Serverliste, Trennungsnachrichten und der Bildschirmvorlese verborgen, sofern sie nicht für den aktuellen Bildschirm eingeblendet werden. Dieser clientseitige Datenschutz hilft Streamern und Content-Creatorn und verändert weder gespeicherte Serverdaten noch das Verbindungsverhalten.",
+  "modmenu.descriptionTranslation.ipmask": "IPMask maskiert Serveradressen in Eingabefeldern, Serverlisten, Chat, Schildern, Hologrammen, GUI-Texten, Tooltips, Verbindungsnachrichten und Sprachausgabe. YACL und Mod Menu sind optional und bieten konfigurierbare Maskierungsoptionen.",
   "modmenu.summaryTranslation.ipmask": "Server-IPs in der Serverliste verbergen und nie wieder versehentlich zeigen.",
   "ipmask.modrinth": "Modrinth",
   "ipmask.sources": "Quellcode",
-  "ipmask.issues": "Fehler melden"
+  "ipmask.issues": "Fehler melden",
+  "ipmask.config.title": "IPMask-Einstellungen",
+  "ipmask.config.category.privacy": "Maskierung",
+  "ipmask.config.address_fields": "Adressfelder verbergen",
+  "ipmask.config.address_fields.description": "Maskiert Serveradressen in Server hinzufügen, Server bearbeiten und Direkt verbinden. Kopieren und Ausschneiden sind im verborgenen Zustand gesperrt.",
+  "ipmask.config.server_list": "Adressen in der Serverliste verbergen",
+  "ipmask.config.server_list.description": "Maskiert Adressen in LAN-Einträgen und Hover-Tooltips der Serverliste. Servernamen bleiben absichtlich unverändert.",
+  "ipmask.config.in_game_text": "Spieltexte verbergen",
+  "ipmask.config.in_game_text.description": "Maskiert die aktive Serveradresse in gerendertem Text, einschließlich Chat, Schildern, Hologrammen, GUI-Texten und Hover-Tooltips.",
+  "ipmask.config.narration": "Vorgelesene Adressen verbergen",
+  "ipmask.config.narration.description": "Maskiert die aktive Serveradresse in Chat- und System-Sprachausgabe für Screenreader.",
+  "ipmask.config.connection_screens": "Adressen auf Verbindungsbildschirmen verbergen",
+  "ipmask.config.connection_screens.description": "Maskiert die aktive Serveradresse auf Verbindungs- und Trennungsbildschirmen."
 }

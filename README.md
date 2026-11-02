@@ -6,7 +6,9 @@
 
 IPMask hides the connected server address anywhere Minecraft renders text through its font system, including chat, signs, holograms, GUI text, and hover tooltips. It also masks multiplayer address fields, LAN entries, connection status, disconnect messages, and narration to help prevent accidental leaks in streams, screenshots, and recordings. Address fields remain editable, and a per-screen eye button reveals the address only when requested. Hidden addresses are not drawn as readable text, and copy/cut are blocked until the field is revealed.
 
-The mod is client-side only. It never rewrites server entries or changes pinging and connection logic. Saved server names intentionally remain unchanged; an IP typed into a server name will still be visible there. Mod Menu is optional.
+The mod is client-side only. It never rewrites server entries or changes pinging and connection logic. Saved server names intentionally remain unchanged; an IP typed into a server name will still be visible there. Mod Menu and YACL are optional; together they provide the in-game settings screen.
+
+The YACL settings screen has independent switches for address fields, server-list addresses, rendered in-game text (chat, signs, holograms, GUI text, and tooltips), narration, and connection/disconnection screens. All options default to enabled and are saved to `config/ipmask.properties`.
 
 **Author:** Tenkayro  
 **Java package:** `tenkayro.ipmask`
@@ -24,6 +26,7 @@ The focusable 20×20 eye controls match the address field height and use simple 
 | Gradle wrapper | 9.8.2 |
 | Java | 25 |
 | Mod Menu (optional development runtime) | 21.0.0 |
+| YACL (optional settings screen) | 3.9.7+26.3-fabric |
 | Mappings | Minecraft's Mojang names; no separate Yarn mappings |
 
 These are pinned in `gradle.properties`. Minecraft 26.3's official version metadata specifies Java 25. Loom 1.19.3 supports the 26.3 game artifact; the game ships with Mojang-named classes for this version.
@@ -64,7 +67,9 @@ To launch the development client with Mod Menu for optional integration checks:
 ./gradlew -PwithModMenu runClient
 ```
 
-Mod Menu is added to the development runtime only when `-PwithModMenu` is passed, and is listed as a suggestion in Fabric metadata. Its update checker is disabled for this mod. It is not a compile or release dependency. Run `./gradlew runClient` without that property to test the mod without Mod Menu. Fabric API provides the resource loader used for IPMask's localized strings. Mod Menu 21.0.0 rejects `"client"` as a custom badge key, so its Client badge is supplied automatically by the mod's `"environment": "client"` metadata instead.
+Mod Menu is compile-only and is added to the development runtime only when `-PwithModMenu` is passed. It is listed as a suggestion in Fabric metadata and is not included in the release jar. Its update checker is disabled for this mod. Run `./gradlew runClient` without that property to test the mod without Mod Menu. Fabric API provides the resource loader used for IPMask's localized strings. Mod Menu 21.0.0 rejects `"client"` as a custom badge key, so its Client badge is supplied automatically by the mod's `"environment": "client"` metadata instead.
+
+YACL is an optional dependency and is listed as a suggestion. The settings screen is exposed through Mod Menu when both are installed. For development, run `./gradlew -PwithModMenu -PwithYacl runClient` to test the settings UI.
 
 ## Manual test checklist
 
@@ -72,6 +77,8 @@ Mod Menu is added to the development runtime only when `-PwithModMenu` is passed
 - [x] Edit Server: same behavior; saving without changes preserves the saved address.
 - [x] Direct Connection: address starts hidden; typing and eye toggle work.
 - [x] Server list: server names stay unchanged; IP addresses in LAN entries and hover tooltips are masked.
+- [ ] YACL settings: each masking area can be toggled and saved independently.
+- [ ] YACL settings screen opens from Mod Menu when both optional mods are installed.
 - [ ] Text matching the connected server address is masked across font-rendered text and narration.
 - [x] Ctrl+C and Ctrl+X are blocked while an address field is hidden and work when it is visible.
 - [x] Connecting and pinging still use the real address and behave like vanilla.

@@ -11,26 +11,26 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public abstract class GameNarratorMixin {
 	@ModifyVariable(method = "sayChatQueued", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private Component ipmask$maskChatNarration(Component message) {
-		return IPMaskClient.maskActive(message);
+		return IPMaskClient.maskNarration(message);
 	}
 
 	@ModifyVariable(method = "saySystemChatQueued", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private Component ipmask$maskSystemChatNarration(Component message) {
-		return IPMaskClient.maskActive(message);
+		return IPMaskClient.maskNarration(message);
 	}
 
 	@ModifyVariable(method = "saySystemQueued", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private Component ipmask$maskSystemNarration(Component message) {
-		return IPMaskClient.maskActive(message);
+		return IPMaskClient.maskNarration(message);
 	}
 
 	@ModifyVariable(method = "saySystemNow(Lnet/minecraft/network/chat/Component;)V", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private Component ipmask$maskImmediateNarration(Component message) {
-		return IPMaskClient.maskActive(message);
+		return IPMaskClient.maskNarration(message);
 	}
 
 	@ModifyVariable(method = "saySystemNow(Ljava/lang/String;)V", at = @At("HEAD"), argsOnly = true, ordinal = 0)
 	private String ipmask$maskImmediateNarration(String message) {
-		return IPMaskClient.maskActive(message);
+		return IPMaskClient.maskNarration(Component.literal(message)).getString();
 	}
 }

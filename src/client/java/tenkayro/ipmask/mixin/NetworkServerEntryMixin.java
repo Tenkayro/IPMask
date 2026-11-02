@@ -1,6 +1,7 @@
 package tenkayro.ipmask.mixin;
 
 import tenkayro.ipmask.client.MaskText;
+import tenkayro.ipmask.client.IPMaskConfig;
 import net.minecraft.client.gui.screens.multiplayer.ServerSelectionList;
 import net.minecraft.client.server.LanServer;
 import org.spongepowered.asm.mixin.Final;
@@ -25,6 +26,6 @@ public abstract class NetworkServerEntryMixin {
 		index = 1
 	)
 	private String ipmask$maskLanAddress(String address) {
-		return MaskText.mask(address, address);
+		return IPMaskConfig.hideServerList() ? MaskText.mask(address, address) : address;
 	}
 }

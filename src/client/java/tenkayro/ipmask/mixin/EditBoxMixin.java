@@ -1,6 +1,7 @@
 package tenkayro.ipmask.mixin;
 
 import tenkayro.ipmask.client.AddressMaskable;
+import tenkayro.ipmask.client.IPMaskConfig;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.network.chat.Component;
@@ -31,21 +32,21 @@ public abstract class EditBoxMixin implements AddressMaskable {
 
 	@Inject(method = "applyFormat", at = @At("HEAD"), cancellable = true)
 	private void ipmask$maskRenderedText(String text, int offset, CallbackInfoReturnable<FormattedCharSequence> cir) {
-		if (this.ipmask$hidden) {
+		if (this.ipmask$hidden && IPMaskConfig.hideAddressFields()) {
 			cir.setReturnValue(FormattedCharSequence.forward("*".repeat(text.length()), Style.EMPTY));
 		}
 	}
 
 	@Inject(method = "keyPressed", at = @At("HEAD"), cancellable = true)
 	private void ipmask$blockCopyAndCut(KeyEvent event, CallbackInfoReturnable<Boolean> cir) {
-		if (this.ipmask$hidden && (event.isCopy() || event.isCut())) {
+		if (this.ipmask$hidden && IPMaskConfig.hideAddressFields() && (event.isCopy() || event.isCut())) {
 			cir.setReturnValue(true);
 		}
 	}
 
 	@Inject(method = "createNarrationMessage", at = @At("HEAD"), cancellable = true)
 	private void ipmask$maskNarration(CallbackInfoReturnable<Component> cir) {
-		if (this.ipmask$hidden) {
+		if (this.ipmask$hidden && IPMaskConfig.hideAddressFields() && IPMaskConfig.hideNarration()) {
 			cir.setReturnValue(Component.translatable("ipmask.field.hidden"));
 		}
 	}
