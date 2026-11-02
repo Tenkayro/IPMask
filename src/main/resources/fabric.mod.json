@@ -3,7 +3,7 @@
   "id": "ipmask",
   "version": "${version}",
   "name": "IPMask",
-  "description": "Hide server IPs in your server list and never leak them again.",
+  "description": "Client-side Fabric privacy mod that masks server addresses in Minecraft text and multiplayer screens.",
   "authors": [
     "Tenkayro"
   ],
